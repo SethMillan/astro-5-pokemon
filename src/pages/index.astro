@@ -1,9 +1,19 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<body class="bg-black/95 p-2">
+	<div class="flex flex-col items-center justify-center">
+		<img src="img/pokemon-logo.svg" alt="pokelol" class="" />
+		<div id="separador" class=""></div>
+	</div>
+	<div class="flex justify-center text-5xl font-light pt-12">
+		<h1>Encuentra tu Pokemon favorito!</h1>
+	</div>
+	<div id="buscador"></div>
+	<div id="card" class="border-2 border-white w-75 h-100 rounded-4xl bg-white/8 backdrop-blur-xs">
+
+	</div>
+</body>

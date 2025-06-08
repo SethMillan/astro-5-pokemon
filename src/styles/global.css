@@ -3,8 +3,14 @@
 
 
 body{
-    background-color: black;
+    width: 100%;
 }
 *{
     color: rgba(250, 235, 215, 0.743);
+}
+#separador{
+    background: white;
+    width: 95%;
+    height: 2px;
+    margin-top: 20px;
 }
