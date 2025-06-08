@@ -1,1 +1,10 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+
+body{
+    background-color: black;
+}
+*{
+    color: rgba(250, 235, 215, 0.743);
+}

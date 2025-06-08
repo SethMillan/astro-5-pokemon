@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig,envField } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -7,5 +7,20 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
+  },
+  
+  // NECESITAS AGREGAR LO DE ABAJO PARA PODER USAR EL CLIENT ROUTER
+  // Habilitar el enrutador del cliente con prefetch
+  experimental: {
+    clientPrerender: true,
+  },
+
+  // Configuración del prefetch
+  prefetch: {
+    defaultStrategy: "viewport", // o 'hover' o 'tap'
+  },
+
+  env: {
+
   }
 });
