@@ -8,46 +8,16 @@ body {
     padding: 0;
 }
 
-* {
-    color: rgba(250, 235, 215, 0.743);
-}
+
 
 #separador {
-    background: white;
     width: 95%;
     height: 2px;
     margin-top: 10px;
 }
-
-.esquina-achatada {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 87%, 87% 100%, 0% 100%);
-    transition: all 0.3s ease-out;
-
-    position: relative;
+#separador-vertical{
+    width: 2px;
+    height: 100%;
+    background-color: gray;
 }
 
-.esquina-achatada::before {
-    content: '';
-    position: absolute;
-    bottom: -13%;
-    right: -13%;
-    background: white;
-    width: 25%;
-    height: 25%;
-    border-radius: 32PX;
-    transition: all 0.3s ease-out;
-
-}
-
-.esquina-achatada:hover {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
-    transition: all 0.3s ease-in;
-
-
-}
-
-.esquina-achatada:hover::before {
-    transition: all 0.3s ease-in;
-    bottom: -11%;
-    right: -11%;
-}
