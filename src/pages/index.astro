@@ -118,11 +118,11 @@ const listResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limi
                 
                 <!-- Stats -->
                 <div class="text-sm opacity-80 flex pt-4">
-                  <p class="w-full"><a class="font-bold">{pokemon.stats[0].base_stat}</a> <br>HP</p>
+                  <p class="w-full"><span class="font-bold">{pokemon.stats[0].base_stat}</span> <br>HP</p>
                   <div id="separador-vertical"></div>
-                  <p class="w-full"> <a class="font-bold">{pokemon.stats[1].base_stat}</a><br>Ataque</p>
+                  <p class="w-full"> <span class="font-bold">{pokemon.stats[1].base_stat}</span><br>Ataque</p>
                   <div id="separador-vertical"></div>
-                  <p class="w-full"> <a class="font-bold">{pokemon.stats[2].base_stat}</a><br>Defensa</p>
+                  <p class="w-full"> <span class="font-bold">{pokemon.stats[2].base_stat}</span><br>Defensa</p>
                 </div>
               </div>
             </div>
