@@ -52,85 +52,89 @@ const listResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limi
 
 
 ---
-
-<body class="bg-gray-100 p-2">
-  <!-- BUSCADOR Y TEXTO LLAMATIVO -->
-  <div id="header" class="flex flex-col items-center justify-center">
-    <img src="img/pokemon-logo.svg" alt="pokelol" class="max-w-48 pt-4" />
-    <div id="separador" class="bg-gray-300"></div>
-    <div id="buscador" class="bg-white border-gray-200 shadow-sm w-[80%] max-w-md mx-auto rounded-2xl p-3 mt-4 flex items-center gap-2">
-      <img src="/img/search.svg" alt="Buscar" class="w-5 h-5 opacity-60" />
-      <input
-        type="text"
-        placeholder="Buscar tu Pokemon..."
-        class="w-full bg-transparent outline-none text-gray-700 placeholder-gray-400 text-sm"
-      />
-    </div>
-
-  </div>
-  
-  <!-- MOSTRAMOS TODA LA DATA -->
-  <div id="content" class="p-4 flex content-center flex-col w-full items-center justify-center">
-    {error && (
-      <div class="text-red-400 text-center mb-4">
-        <p>{error}</p>
+<Layout>
+  <body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen p-2">
+    <!-- BUSCADOR Y TEXTO LLAMATIVO -->
+    <div id="header" class="flex flex-col items-center justify-center">
+      <img src="img/pokemon-logo.svg" alt="pokelol" class="max-w-48 pt-4" />
+      <div id="separador" class="bg-gray-300"></div>
+      <div id="buscador" class="bg-white border-gray-200 shadow-sm w-[80%] max-w-md mx-auto rounded-2xl p-3 mt-4 flex items-center gap-2">
+        <img src="/img/search.svg" alt="Buscar" class="w-5 h-5 opacity-60 invert" />
+        <input
+          type="text"
+          placeholder="Buscar tu Pokemon..."
+          class="w-full bg-transparent outline-none text-gray-700 placeholder-gray-400 text-sm"
+        />
       </div>
-    )}
+
+    </div>
     
-    <!-- GRID DE POKÉMON -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-[80%]">
-      {pokemonList.map((pokemon: any) => (
-        <div
-        id="card"  
-        class="w-64 h-84 pb-5 shadow-lg bg-white backdrop-blur-xs border-2 border-gray-200 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 overflow-hidden"
-        >
-          <div  class="text-black text-center h-full flex flex-col gap-1 justify-end">
-            <!-- Imagen -->
-            <img 
-              src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default} 
-              alt={pokemon.name}
-              class="w-32 h-32 mx-auto object-contain"
-              loading="lazy"
-            />
-            
-            <!-- BACKGROUND -->
-              <div id="background" class={`absolute left-1/2 -translate-x-1/2 -top-36 flex flex-col-reverse w-[150%] h-[80%] -z-10 rounded-[50%] ${getTypeColor(pokemon.types[0].type.name)}`}></div>
-             <!-- ID BACKGROUND  -->
-            <!-- <p class="text-sm opacity-70 ">#{pokemon.id.toString().padStart(3, '0')}</p> -->
-            
-            <!-- Nombre -->
-            <h3 class="text-2xl opacity-80 font-bold capitalize">{pokemon.name}</h3>
-            
-            <!-- ID -->
-            <div class="bg-gray-100 absolute top-4 right-4 px-4 py-1 rounded-2xl text-sm opacity-70 justify-center flex">#{pokemon.id.toString().padStart(3, '0')}</div>
-            
-            
-            <!-- Tipos -->
-            <div class="flex gap-4 justify-center flex-wrap m-2">
-              {pokemon.types.map((type: any) => (
-                <span class={`px-2 py-1 rounded text-xs capitalize ${getTypeColor(type.type.name)}`}>
-                  {type.type.name}
-                </span>
-              ))}
-            </div>
-            
-            <!-- Stats -->
-            <div class="text-sm opacity-80 flex pt-4">
-              <p class="w-full"><a class="font-bold">{pokemon.height / 10}m</a> <br>Altura</p>
-              <div id="separador-vertical"></div>
-              <p class="w-full"> <a class="font-bold">{pokemon.weight / 10}kg </a><br>Peso</p>
-              <div id="separador-vertical"></div>
-              <p class="w-full"> <a class="font-bold">{pokemon.weight / 10}kg </a><br>Peso</p>
-            </div>
-          </div>
+    <!-- MOSTRAMOS TODA LA DATA -->
+    <div id="content" class="p-4 flex content-center flex-col w-full items-center justify-center">
+      {error && (
+        <div class="text-red-400 text-center mb-4">
+          <p>{error}</p>
         </div>
-      ))}
+      )}
+      
+      <!-- GRID DE POKÉMON -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-[80%]">
+        {pokemonList.map((pokemon: any) => (
+          <a href={`pokemon/${pokemon.name}`}>
+            <div
+            id="card"  
+            class="w-64 h-84 pb-5 shadow-lg bg-white backdrop-blur-xs border-2 border-gray-200 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 overflow-hidden cursor-pointer"
+            >
+              <div  class="text-black text-center h-full flex flex-col gap-1 justify-end">
+                <!-- Imagen -->
+                <img 
+                  transition:name={`img-${pokemon.name}`}
+                  src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default} 
+                  alt={pokemon.name}
+                  class="w-32 h-32 mx-auto object-contain"
+                  loading="lazy"
+                />
+                
+                <!-- BACKGROUND -->
+                  <div id="background" class={`absolute left-1/2 -translate-x-1/2 -top-36 flex flex-col-reverse w-[150%] h-[80%] -z-10 rounded-[50%] ${getTypeColor(pokemon.types[0].type.name)}`}></div>
+                <!-- ID BACKGROUND  -->
+                <!-- <p class="text-sm opacity-70 ">#{pokemon.id.toString().padStart(3, '0')}</p> -->
+                
+                <!-- Nombre -->
+                <h3 class="text-2xl opacity-80 font-bold capitalize">{pokemon.name}</h3>
+                
+                <!-- ID -->
+                <div class="bg-gray-100 absolute top-4 right-4 px-4 py-1 rounded-2xl text-sm opacity-70 justify-center flex">#{pokemon.id.toString().padStart(3, '0')}</div>
+                
+                
+                <!-- Tipos -->
+                <div class="flex gap-4 justify-center flex-wrap m-2">
+                  {pokemon.types.map((type: any) => (
+                    <span class={`px-2 py-1 rounded text-xs capitalize ${getTypeColor(type.type.name)}`}>
+                      {type.type.name}
+                    </span>
+                  ))}
+                </div>
+                
+                <!-- Stats -->
+                <div class="text-sm opacity-80 flex pt-4">
+                  <p class="w-full"><a class="font-bold">{pokemon.stats[0].base_stat}</a> <br>HP</p>
+                  <div id="separador-vertical"></div>
+                  <p class="w-full"> <a class="font-bold">{pokemon.stats[1].base_stat}</a><br>Ataque</p>
+                  <div id="separador-vertical"></div>
+                  <p class="w-full"> <a class="font-bold">{pokemon.stats[2].base_stat}</a><br>Defensa</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      
+      <!-- Contador -->
+      <div class="text-center mt-6 text-gray-600">
+        <p>Mostrando {pokemonList.length} de 100 Pokemon</p>
+        <p class="text-xs mt-1"> ⭐ Se limitan a 20 para mejor rendimiento</p>
+      </div>
     </div>
-    
-    <!-- Contador -->
-    <div class="text-center mt-6 text-white/70">
-      <p>Mostrando {pokemonList.length} de 100 Pokémon</p>
-      <p class="text-xs mt-1">💡 Se limitan a 20 para mejor rendimiento</p>
-    </div>
-  </div>
-</body>
+  </body>
+</Layout>
