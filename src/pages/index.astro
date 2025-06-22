@@ -80,7 +80,7 @@ const listResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limi
       <!-- GRID DE POKÉMON -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-[80%]">
         {pokemonList.map((pokemon: any) => (
-          <a href={`pokemon/${pokemon.name}`}>
+          <a href={`pokemon/${pokemon.name}`} class="flex content-center flex-col w-full items-center justify-center">
             <div
             id="card"  
             class="w-64 h-84 pb-5 shadow-lg bg-white backdrop-blur-xs border-2 border-gray-200 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 overflow-hidden cursor-pointer"
@@ -96,15 +96,15 @@ const listResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limi
                 />
                 
                 <!-- BACKGROUND -->
-                  <div id="background" class={`absolute left-1/2 -translate-x-1/2 -top-36 flex flex-col-reverse w-[150%] h-[80%] -z-10 rounded-[50%] ${getTypeColor(pokemon.types[0].type.name)}`}></div>
+                  <div id="background" class={`absolute left-1/2 -translate-x-1/2 -top-36 flex flex-col-reverse w-[150%] h-[80%] -z-20 rounded-[50%] ${getTypeColor(pokemon.types[0].type.name)}`}></div>
                 <!-- ID BACKGROUND  -->
-                <!-- <p class="text-sm opacity-70 ">#{pokemon.id.toString().padStart(3, '0')}</p> -->
+                <p class="left-0 text-8xl font-extrabold opacity-50 absolute top-4 -z-10 w-full">{pokemon.id.toString().padStart(3, '0')}</p>
                 
                 <!-- Nombre -->
                 <h3 class="text-2xl opacity-80 font-bold capitalize">{pokemon.name}</h3>
                 
                 <!-- ID -->
-                <div class="bg-gray-100 absolute top-4 right-4 px-4 py-1 rounded-2xl text-sm opacity-70 justify-center flex">#{pokemon.id.toString().padStart(3, '0')}</div>
+                <div class="bg-gray-100 absolute top-4 right-4 px-4 py-1 rounded-2xl text-sm opacity-70 justify-center flex ">#{pokemon.id.toString().padStart(3, '0')}</div>
                 
                 
                 <!-- Tipos -->
