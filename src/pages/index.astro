@@ -1,5 +1,4 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 import {getTypeColor} from "../service/general"
@@ -76,7 +75,7 @@ const listResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limi
                 <!-- BACKGROUND -->
                 <div id="background" class={`absolute left-1/2 -translate-x-1/2 -top-36 flex flex-col-reverse w-[150%] h-[80%] -z-20 rounded-[50%] ${getTypeColor(pokemon.types[0].type.name)}`}></div>
                 <!-- ID BACKGROUND  -->
-                <p class="left-0 text-8xl font-extrabold opacity-50 absolute top-4 -z-10 w-full">{pokemon.id.toString().padStart(3, '0')}</p>
+                <p class="left-0 text-9xl font-extrabold opacity-50 absolute top-4 -z-10 w-full">{pokemon.id.toString().padStart(3, '0')}</p>
                 
                 <!-- Nombre -->
                 <h3 class="text-2xl opacity-80 font-bold capitalize">{pokemon.name}</h3>
